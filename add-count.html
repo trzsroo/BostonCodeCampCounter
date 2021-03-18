@@ -1,0 +1,193 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Boston Code Camp Counter | Add Count</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="">
+    </head>
+
+    <nav id="navbar">
+        <ul style="width:100%">
+            <li style="float: left;" id="programName">Boston Code Camp | Add Count</li>
+        </ul>
+    </nav>
+
+
+    <body>
+        <br /><br /><br /><br /><br /><br />
+        <form id="speakerInformation" method="POST">
+            <table class="center">
+                <tr>
+                    <td colspan="4"><label style="font-weight: bold; font-size: 30px;">Search by:</label></td>
+                </tr>
+                <tr>
+                    <th class="tabHeader" id="searchBySession"><a onclick="selectTab('searchBySession');">Session</a></th>
+                    <th class="tabHeader" id="searchByRoomAndTime"><a onclick="selectTab('searchByRoomAndTime');">Room & Time Slot</a></th>
+                    <td><a onclick="selectTab();"></a></th>
+                </tr>
+                <tr>
+                    <td colspan="4" style="width: 100%;">
+                        <table id="infoBody">
+                            <tr><td colspan="4"><br/> </td></tr>
+                            <tr>
+                                <td colspan="2" style="text-align: right; width: 50%;"><u>Session Name: </u></td>
+                                <td colspan="2">
+                                    <select name="sessionName" id="ddSessionName" onchange="ddSelected('session');">
+                                        <option value="-1" selected="true"></option>
+                                        <option value="testCase">Mocks</option>
+                                    </select>
+                                    <label id="sessionNameLabel"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: right; width: 50%;"><u>Room Name: </u></td>
+                                <td colspan="2">
+                                    <select name="roomName" id="ddRoomName" onchange=''>
+                                        <option value="-1" selected="true"></option>
+                                        <option value="testCase">Monroe</option>
+                                    </select>
+                                    <label id="roomNameLabel"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: right; width: 50%;"><u>Time Slot: </u></td>
+                                <td colspan="2">
+                                    <select name="timeSlot" id="ddTimeSlot" onchange="ddSelected('roomAndTime');">
+                                        <option value="-1" selected="true"></option>
+                                        <option value="testCase">10:30 AM - 11:30 AM</option>
+                                    </select>
+                                    <label id="timeSlotLabel"></label>
+                                </td>
+                            </tr>
+                            <tr class="countBoxes">
+                                <td colspan="4"><hr style="width: 50%;"/> </td>
+                            </tr>
+                            <tr class="countBoxes">
+                                <td colspan="2" style="text-align: right;">Count Time: </td>
+                                <td>
+                                    <select name="countTime" id="ddCountTime" >
+                                        <option value="-1" selected="true"></option>
+                                        <option value="beginning">Beginning</option>
+                                        <option value="middle">Middle</option>
+                                        <option value="end">End</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr class="countBoxes"><td> </td></tr>
+                            <tr class="countBoxes">
+                                <td colspan="2" style="text-align: right;">Count: </td>
+                                <td>
+                                    <input type="number" name="numberCount" min="0" />
+                                </td>
+                            </tr>
+                            <tr class="countBoxes"><td></td></tr>
+                            <tr class="countBoxes">
+                                <td colspan="4" style="text-align: center;">
+                                    <input type="submit" id="btnAdd" name="addSpeaker" value="Add" />
+                                    &emsp;&emsp;
+                                    <input type="button" id="btnCancel" name="clearSpeaker" value="Cancel" />
+                                </td>
+                            </tr>
+                        <tr><td><br/> </td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+    <script>
+
+        var ddSession = document.getElementById('ddSessionName');
+        var labelSession = document.getElementById('sessionNameLabel');
+        var ddRoom = document.getElementById('ddRoomName');
+        var labelRoom = document.getElementById('roomNameLabel');
+        var ddTime = document.getElementById('ddTimeSlot');
+        var labelTime = document.getElementById('timeSlotLabel');
+        var countBoxes = document.getElementsByClassName('countBoxes');
+
+        function selectTab(tabID) {
+
+            // finds the elements and sets as variables
+            var selectedTab;
+            var notSelected;
+
+            ddSelected("nothing");
+
+            if(tabID == 'searchByRoomAndTime'){
+                selectedTab = document.getElementById(tabID);
+                notSelected = document.getElementById('searchBySession');
+
+                selectedTab.style.background = '#e6e6e6';
+                notSelected.style.background = '#bfbfbf';
+
+                ddSession.style.display = "none";
+                ddSession.selectedIndex = 0;
+                labelSession.style.display = 'block';
+                labelSession.innerText = '';
+                ddRoom.style.display = 'block';
+                ddRoom.selectedIndex = 0;
+                labelRoom.style.display = "none";
+                labelRoom.innerText = '';
+                ddTime.style.display = 'block';
+                ddTime.selectedIndex = 0;
+                labelTime.style.display = "none";
+                labelTime.innerText = '';
+
+            } else {
+                selectedTab = document.getElementById(tabID);
+                notSelected = document.getElementById('searchByRoomAndTime');
+                //sets selected tab to lighter background color and the other tab to the darker color
+                selectedTab.style.background = '#e6e6e6';
+                notSelected.style.background = '#bfbfbf';
+                
+                ddSession.style.display = 'block';
+                ddSession.selectedIndex = 0;
+                labelSession.style.display = "none";
+                labelSession.innerText = '';
+                ddRoom.style.display = "none";
+                ddRoom.selectedIndex = 0;
+                labelRoom.style.display = 'block';
+                labelRoom.innerText = '';
+                ddTime.style.display = "none";
+                ddTime.selectedIndex = 0;
+                labelTime.style.display = 'block';
+                labelTime.innerText = '';
+            }
+        }
+
+        function ddSelected(type) {
+            if(type == "session") {
+                labelSession.innerText = "";
+                labelRoom.innerText = "Monroe";
+                labelTime.innerText = "10:30 AM - 11:30 AM";
+                showCounts(true);
+            } 
+            if(type == "nothing") {
+                showCounts(false);
+            }
+            if(type == "roomAndTime") {
+                labelSession.innerText = "Mocks";
+                labelRoom.innerText = "";
+                labelTime.innerText = "";
+                showCounts(true);
+            }
+        }
+
+        window.onload = selectTab('searchBySession');
+
+        function showCounts(yesOrNo) {
+            var i = 0;
+            if (yesOrNo) {
+                for(;countBoxes[i];) {
+                    countBoxes[i].style.visibility = "visible";
+                    i++;
+                }
+            } else {
+                for(;countBoxes[i];) {
+                    countBoxes[i].style.visibility = "collapse";
+                    i++;
+                }
+            }
+        }
+    </script>
+</html>

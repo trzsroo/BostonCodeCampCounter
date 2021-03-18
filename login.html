@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Boston Code Camp Counter | Login</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="">
+    </head>
+
+    <nav id="navbar">
+        <ul style="width:100%">
+            <li style="float: left;" id="programName">Boston Code Camp</li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Add Counts</a></li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropdownbtn">Add/Edit Information</button>
+                    <div class="dropdown-content">
+                        <a href="room-screen.html">&nbsp;&nbsp;Room</a>
+                        <a href="speaker-screen.html">&nbsp;&nbsp;Speaker</a>
+                        <a href="timeslot-screen.html">&nbsp;&nbsp;Time Slot</a>
+                        <a href="session-screen.html">&nbsp;&nbsp;Session</a>
+                    </div>
+                </div>
+            </li>
+            <li><a href="login.html" id="selected">Login</a></li>
+        </ul>
+    </nav>
+
+
+    <body>
+        <br /><br /><br /><br /><br /><br />
+        <form id="loginInformation" method="POST">
+            <table class="center" id="loginBody">
+                <tr><td></td></tr>
+                <tr>
+                    <th colspan="2" style="text-align: center;"><b>Login</b></th>
+                </tr>
+                <tr><td></td></tr>
+                <tr>
+                    <td style="text-align: right;">Username: &nbsp; </td>
+                    <td><input type="text" id="username" name="username" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align: right;">Password: &nbsp;</td>
+                    <td><input type="password" id="password" name="password"/></td>
+                </tr>
+                <tr><td></td></tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;">
+                        <input type="submit" value="Login" id="btnLogin" name="btnLogin" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

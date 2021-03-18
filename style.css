@@ -1,0 +1,151 @@
+.tabHeader {
+    text-align: center;
+    width: 16%;
+    border-radius: 0px 15px 0px 0px;
+    background: #bfbfbf;
+    font-size: 30px;
+    box-shadow: -5px 0px 5px inset #888888;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    border-spacing: 0px;
+}
+
+#selected, #infoBody, #loginBody {
+    background: #e6e6e6;
+}
+
+#infoBody {
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    box-shadow: 5px 5px 10px #888888;
+}
+
+#infoBody td, #loginBody td {
+    width: 50%;
+}
+
+#loginBody {
+    width: 40%;
+    font-size: 24px;
+    box-shadow: 5px 5px 10px #888888;
+}
+
+#loginBody th {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+body {
+    margin: 0;
+    font-family: serif;
+}
+
+nav {
+    background-color: #e6e6e6;
+    width: 100%;
+    padding: 0px;
+    text-align: right;
+    top: 0;
+    position: fixed;
+    z-index: 1000;
+}
+
+/* Links inside the navbar */
+#navbar li a, .dropdownbtn, #programName {
+	display: block;
+	color: #000000;
+	padding: 14px 10px;
+    font-size: 30px;
+	text-decoration: none;
+	margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+	border: none;
+	position: relative;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content a {
+    text-align: left;
+}
+
+.dropdownbtn {
+    text-decoration: none;
+    /* padding: 0; */
+    background: #e6e6e6;
+    font-family: serif;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #e6e6e6;
+    min-width: 160px;
+    box-shadow: 5px 5px 10px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    width: 100%;
+}
+
+th a {
+    text-decoration: none;
+    color: #000000;
+    background-color: transparent;
+}
+
+th:hover {
+    background-color: #e6e6e6;
+}
+
+nav a:hover, .dropdown-content a:hover, .dropdown:hover .dropdownbtn, #navSelected {
+    background-color: #bfbfbf;
+}
+
+nav ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    display: inline-block;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+input[type=button], input[type=submit] {
+    color: #ffffff;
+    background-color: #a6a6a6;
+    font-size: 24px;
+}
+
+input[type=button]:hover, input[type=submit]:hover {
+    background-color: #666666;
+}
+
+/*For Time Slot Start And End Time*/
+
+label{
+    display: block;
+    font: lrem 'Fira Sans', sans-serif;
+}
+
+input, label{
+    margin: .4rem 0;
+}
+
+input[type=number], input[type=text], select {
+    font-size: 20px;
+}

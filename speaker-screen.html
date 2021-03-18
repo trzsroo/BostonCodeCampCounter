@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Boston Code Camp Counter | Session</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="">
+    </head>
+
+    <nav id="navbar">
+        <ul style="width:100%">
+            <li style="float: left;" id="programName">Boston Code Camp</li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Add Counts</a></li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropdownbtn">Add/Edit Information</button>
+                    <div class="dropdown-content">
+                        <a href="room-screen.html">&nbsp;&nbsp;Room</a>
+                        <a href="speaker-screen.html">&nbsp;&nbsp;Speaker</a>
+                        <a href="timeslot-screen.html">&nbsp;&nbsp;Time Slot</a>
+                        <a href="session-screen.html">&nbsp;&nbsp;Session</a>
+                    </div>
+                </div>
+            </li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+
+    <body>
+        <br /><br /><br /><br /><br /><br />
+        <form id="sessionInformation" method="POST">
+            <table class="center">
+                <tr>
+                    <th class="tabHeader"><a href="room-screen.html">Room</a></th>
+                    <th class="tabHeader"><a href="speaker-screen.html">Speaker</a></th>
+                    <th class="tabHeader"><a href="timeslot-screen.html">Time Slot</a></th>
+                    <th class="tabHeader" id="selected"><a href="session-screen.html">Session</a></th>
+                </tr>
+                <tr>
+                    <td colspan="4" style="width: 100%;">
+                        <table id="infoBody">
+                            <tr>
+                                <td colspan="4" style="text-align: center;">
+                                    <label id="addOrEdit" style="font-weight: bold;"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" style="text-align: center;"><b>Session Information</b></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: right;">Session Name: </td>
+                                <td colspan="2">
+                                    <select name="sessionName" id="ddSessionName" onchange='addOrEditFunc();'>
+                                        <option value="0">&lt;Add New Session&gt;</option>
+                                        <option value="testCase">How to Give a Presentation</option>
+                                        <option value="-1" selected="true"></option>
+                                    </select>
+                                    <input type="text" id="boxSessionName" name="sessionName" style="display: none;"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: right;">Speaker Name: </td>
+                                <td colspan="2">
+                                    <select name="speakerName" id="ddSpeakerName" onchange='addFunc();'>
+                                        <option value="testCase">Uncle Bob - bob@gmail.com</option>
+                                        <option value="0">&lt;Add New Speaker&gt;</option>
+                                        <option value="-1" selected="true"></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: right;">Time Slot: </td>
+                                <td colspan="2">
+                                    <select name="timeSlot" id="ddTimeSlot" onchange='addFunc();'>
+                                        <option value="testCase">10:30 AM - 11:30 AM</option>
+                                        <option value="0">&lt;Add New Time Slot&gt;</option>
+                                        <option value="-1" selected="true"></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align: right;">Room Name: </td>
+                                <td colspan="2">
+                                    <select name="roomName" id="ddRoomName" onchange='addFunc();'>
+                                        <option value="testCase">Lincoln</option>
+                                        <option value="0">&lt;Add New Room Name&gt;</option>
+                                        <option value="-1" selected="true"></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr><td> </td></tr>
+                            <tr id="addNewSession">
+                                <td colspan="4" style="text-align: center;">
+                                    <input type="submit" id="btnAdd" name="addSpeaker" value="Add" />
+                                    &nbsp;
+                                    <input type="button" id="btnClear" name="clearSpeaker" value="Clear" />
+                                    &nbsp;
+                                    <input type="button" id="btnExit" name="exitSpeaker" value="Exit" />
+                                </td>
+                            </tr>
+                            <tr id="editSession" style="display: none;">
+                                <td colspan="4" style="text-align: center;">
+                                    <input type="submit" id="btnSave" name="saveSpeaker" value="Save" />
+                                    &nbsp;
+                                    <input type="button" id="btnClear" name="clearSpeaker" value="Clear" />
+                                    &nbsp;
+                                    <input type="button" id="btnDelete" name="deleteSpeaker" value="Delete" />
+                                    &nbsp;
+                                    <input type="button" id="btnExit" name="exitSpeaker" value="Exit" />
+                                </td>
+                            </tr>
+                            <tr><td><br /> </td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+    <script>
+        var addOrEdit = document.getElementById("addOrEdit");
+        var addNewSessionBtns = document.getElementById("addNewSession");
+        var editSessionBtns = document.getElementById("editSession");
+        var sessionNameDd = document.getElementById("ddSessionName");
+        var speakerNameDd = document.getElementById("ddSpeakerName");
+        var roomNameDd = document.getElementById("ddRoomName");
+        var timeSlotDd = document.getElementById("ddTimeSlot");
+        var sessionName = document.getElementById("boxSessionName");
+        
+        function addOrEditFunc() {
+            if ((sessionNameDd.value == 0) || (sessionNameDd.value == -1) ) {
+                addOrEdit.textContent = "Enter";
+                editSessionBtns.style.display = "none";
+                addNewSessionBtns.style.display = "";
+                if (sessionNameDd.value == 0) {
+                    sessionNameDd.style.display = "none";
+                    sessionName.style.display = ""
+                }
+            } else {
+                addOrEdit.textContent = "Edit";
+                editSessionBtns.style.display = "";
+                addNewSessionBtns.style.display = "none";
+                sessionNameDd.style.display = "none";
+                sessionName.style.display = "";
+                sessionName.value = "How to Give a Presentation";
+                speakerNameDd.selectedIndex = 0;
+                timeSlotDd.selectedIndex = 0;
+                roomNameDd.selectedIndex = 0;
+                
+            }
+        };
+
+        function addFunc() {
+            if (speakerNameDd.value == 0) {
+                window.location.replace("speaker-screen.html");
+            }
+            if (roomNameDd.value == 0) {
+                window.location.replace("room-screen.html");
+            }
+            if (timeSlotDd.value == 0) {
+                window.location.replace("timeslot-screen.html");
+            }
+        };
+
+        window.onload = addOrEditFunc();
+    </script>
+</html>
